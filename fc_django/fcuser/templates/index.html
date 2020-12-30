@@ -1,0 +1,369 @@
+{% extends "base.html" %}
+{% block contents %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /**
+* Base
+*/
+body,
+html {
+text-align: center;
+font: normal 100%/1.5 Montserrat, sans-serif;
+}
+
+blockquote,p,cite {
+display: block;
+margin: 0;
+padding: 0;
+margin-bottom: 1.5rem;
+font-style: normal;
+}
+
+a, a:visited {
+display: inline-block;
+padding: 1px;
+text-decoration: none;
+border-bottom: 1px solid;
+color: #8aa651;
+}
+
+.animated {
+transition: all 500ms ease;
+}
+
+/**
+* Layout
+*/
+.page {
+padding-top: 4.5rem;
+background-color: #8aa651;
+}
+
+.page-footer {
+background: white;
+padding-top: 3rem;
+padding-bottom: 1.5rem;
+}
+
+.container {
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.cta {
+margin-top: 3rem;
+margin-bottom: 3rem;
+}
+
+/** 
+* Button
+*/
+.button {
+display: inline-block;
+background: none;
+border: 0;
+font: 300 81.25%/1 Open Sans, sans-serif;
+text-transform: uppercase;
+letter-spacing: 0.17em;
+padding: 16px 24px;
+background-color: #ccc;
+color: white;
+border-radius: 3px;
+}
+
+.button.new-quote {
+background-color: white;
+color: #8aa651;
+}
+
+.button.tweet {
+position: relative;
+background-color: #55acee;
+color: white;
+padding-left: 48px;
+}
+
+.button.tweet > .icon {
+width: 18px;
+position: absolute;
+left: 16px;
+top: 13px;
+}
+
+/**
+* Quote Component
+*/
+.quote {
+max-width: 648px;
+margin-left: auto;
+margin-right: auto;
+color: white;
+quotes: "“" "”" "‘" "’";
+}
+
+.quote::before {
+font-size: 86px;
+font-family: Georgia, serif;
+line-height: 1.5rem;
+content: open-quote;
+color: rgba(255,255,255,0.4);
+}
+
+.quote__body {
+text-transform: uppercase;
+font-weight: bold;
+font-size: 150%;
+letter-spacing: 0.085em;
+}
+
+.quote__cite {
+text-transform: uppercase;
+font-weight: 300;
+font-size: 112.5%;
+letter-spacing: 0.085em
+}
+
+/**
+* Credits
+*/
+.credits {
+margin-top: 1.5rem;
+font: normal 87.5%/1.4 Open Sans, sans-serif;
+color: #66757f
+}
+
+/**
+* responsive
+*/
+@media screen and (min-width: 650px) {
+.page {
+padding-top: 6rem;
+}
+.quote::before {
+font-size: 100px;
+line-height: 4rem;
+}
+.quote__body {
+font-size: 220%;
+margin-bottom: 3rem;
+}
+.quote__cite {
+font-size: 125%;
+}
+.cta {
+margin-top: 6rem;  
+margin-bottom: 6rem;
+}
+}
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main class="page animated" style="background:#8aa651">
+        <div class="container">
+          <blockquote class="quote">
+            <p class="quote__body">Loading&hellip;</p>
+            <footer class="quote__footer">
+              <cite class="quote__cite"></cite>
+            </footer>
+          </blockquote>
+          <div class="cta">
+             <button class="button new-quote animated">Conquer Monday</button>
+          </div>
+        </div>
+      </main>
+
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-outline-primary" type="button">회원가입</button>
+        <button class="btn btn-outline-primary" type="button">상품목록</button>
+      </div>
+
+      <script type="text/javascript">
+      // Wrap all the code in a IIFE to prevent the global scope pollution;
+;(function() {
+  "use strict";
+  
+  // Quotes Collection
+  var quotes = [{
+      "quote": "It's a good week<br>to have a good week."
+    }, {
+      "quote": "Will it be easy? Nope.<br>Worth it? Absolutely."
+    }, {
+      "quote": "Be so good<br>they can't<br>ignore you.",
+      "author": "Steve Martin"
+    }, {
+      "quote": "Life begins<br>after coffee."
+    }, {
+      "quote": "Make today<br>so awesome<br>that yesterday<br>gets jealous."
+    }, {
+      "quote": "You can't be both<br>awesome and negative.<br>Choose one.",
+      "author": "Karen Salmansohn"
+    }, {
+      "quote": "Don't wait for<br>opportunity.<br>Create it."
+    }, {
+      "quote": "Life is like<br>a cup of tea.<br>It's all in how<br>you make it."
+    }, {
+      "quote": "Wake up with<br>determination.<br>Go to bed with<br>satisfaction."
+    }, {
+      "quote": "The grass is<br>greener where<br>you water it."
+    }, {
+      "quote": "Dear Monday. I want to break up. I'm seeing Tuesday and dreaming about Friday. It's not me, It's you."
+    }, {
+      "quote": "Everything It's hard<br>before It is easy.",
+      "author": "Goethe J.W."
+    }, {
+      "quote": "Wake up.<br>Kick ass.<br>Be kind.<br>Repeat."
+    }, {
+      "quote": "Either you run the day<br>or the day runs you."
+    }, {
+      "quote": "Every morning<br>you have two choices:<br>Continue to sleep<br>with your dreams,<br>or wake up<br>and chase them."
+    }, {
+      "quote": "The dream is Free.<br>Hustle sold separately."
+    }, {
+      "quote": "Welcome webmarket.",
+      "author": "Henry Van Dyke"
+    }, {
+      "quote": "Quit slacking and<br>make it happen."
+    }, {
+      "quote": "Put your<br>positive<br>pants on."
+    }, {
+      "quote": "You don't have to be great to start, but you have to start to be great.",
+      "author": "Zig Ziglar"
+    }, {
+      "quote": "Punch today<br>in the face."
+    }, {
+      "quote": "Get up,dress up,<br>show up and<br>never give up."
+    }, {
+      "quote": "Do what you have to do until you can do what you want to do.",
+      "author": "Oprah Winfrey"
+    }, {
+      "quote": "Stay humble.<br>Hustle hard."
+    }, {
+      "quote": "Better days are coming:<br>They are called<br>Saturday &amp; Sunday."
+    }, {
+      "quote": "Self-confindence<br>is the best outfit.<br>Rock It and own It."
+    }, {
+      "quote": "I can.<br>I will."
+    }, {
+      "quote": "May your coffee<br>be strong and your<br>Monday productive."
+    }, {
+      "quote": "I'm in charge of how I feel, and today I'm choosing happiness."
+    }, {
+      "quote": "Suck it up<br>Buttercup"
+    }],
+      
+    // Colors Collection
+    colors = ["#E0D144", "#E4A629", "#F39040", "#E66751", "#CA83A5", "#A39BCB", "#8EB7BF", "#6DC4A6", "#8AA651"],
+      
+    // Random number Constructor
+    // Generate a random number within a provided
+    // range a stores the last value, so the next value
+    // doesn't macth the previous
+    Random = function Random(max) {
+      var prev, next;
+      this.max = max;
+      this.generate = function generate() {
+        while(prev === next) 
+          next = Math.floor(Math.random() * this.max);
+        prev = next;
+        return next;
+      };
+    },
+        
+    // Opens a new tweet window with the quote shown on 
+    // screen and some other parameters.
+    // https://dev.twitter.com/web/intents
+    composeTweet = function composeTweet(text) {
+      // My tweet object
+      var tweet = {
+        url: "https://twitter.com/intent/tweet?",
+        via: "via=AlexisReina&",
+        hashtags: "hashtags=freecodeamp,quotemachine&",
+        related: "related=@CreativeMarket&",
+        text: "text=" + $('.quote__body').html().replace(/<br>|\s/g, '+')
+      };
+      
+      // Open the tweet window
+      // https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Examples
+      return window.open(
+        tweet.url + tweet.hashtags + tweet.via + tweet.related + tweet.text,
+        "Tweet This Quote",
+        "resizable,scrollbars,status,width=550px,height=420px"
+      );
+    },
+    
+    randomQuote = new Random(quotes.length),  // Random instance for quote
+    randomColor = new Random(colors.length),  // Random instance for colors
+    
+    // Main app function
+    // Generates Quotes and app themes
+    newQuote = function newQuote(e) {
+      var
+        // Get a quote and a theme
+        quote = quotes[randomQuote.generate()],
+        color = colors[randomColor.generate()],
+       
+        // Cache some DOM Elements
+        $page = $('.page'),
+        $button = $page.find('.new-quote'),
+        $quote = $page.find('.quote'),
+        $quoteFooter = $quote.find('.quote__footer'),
+        $footerLinks = $('.page-footer a'),
+        
+        // Test if the quote has an author 
+        hasAuthor = !!quote.author;
+      
+      // Replace the old quote with a new one
+      $quote
+        .find('.quote__body')
+        .html( quote.quote );
+      
+      // Change  the theme  
+      $page.css('background-color', color);
+      $button.css('color', color);
+      $footerLinks.css('color', color);
+      
+      // Some quotes have author
+      // others not
+      if ( hasAuthor ) {
+        // Put the text and
+        // show the footer
+        $quoteFooter
+          .find('.quote__cite')
+          .text( '– ' + quote.author + ' –')
+          .end()
+          .show();
+  
+      } else {
+        // hide the footer
+        $quoteFooter.hide()
+      }
+
+    },
+    
+    // Buttons functionality
+    registerHandlers = function registerHandlers() {
+      $(document)
+        .on('click', '.new-quote', newQuote)
+        .on('click', '.tweet', composeTweet);
+    },
+      
+    // Initialization using IIFE
+    // https://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+    init = function init(){
+      registerHandlers();
+      newQuote();
+    }(); // <- look at this!
+  
+})();
+
+      </script>
+</body>
+</html>
+{{email}} 
+{% endblock %}    
